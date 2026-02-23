@@ -3,99 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tobias | Tech Stack & Skills</title>
+    <title>Tobias | Tech Expertise</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #07050a;
-            --card-bg: rgba(15, 10, 26, 0.7);
+            --card-bg: #0F0A1A;
             --neon-magenta: #FF00FF;
             --neon-cyan: #00FFFF;
-            --neon-violet: #9400D3;
-            --lavender: #E0B0FF;
+            --neon-purple: #9400D3;
+            --text-gray: #b0b0b0;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-dark);
             color: white;
             font-family: 'Poppins', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
+        /* Navigation (Gleich wie Index) */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 5%;
-            background: rgba(7, 5, 10, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(7, 5, 10, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(148, 0, 211, 0.2);
         }
 
-        .logo { font-weight: 700; color: var(--neon-cyan); text-decoration: none; font-size: 1.5rem; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; }
+        .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--neon-cyan); text-decoration: none; }
+        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon-magenta); }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-      h1 {
-    text-align: center;
-    font-size: 3rem;
-    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
-    -webkit-background-clip: text; /* Für Chrome/Safari */
-    background-clip: text;         /* Standard - Das hier behebt die Warnung! */
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 50px;
-}
-
-        .skills-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        /* Hero Section für Skills */
+        .skills-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.7), var(--bg-dark)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+        }
+
+        .skills-hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; }
+        .skills-hero p { color: var(--neon-magenta); letter-spacing: 2px; }
+
+        /* Content Layout */
+        section { padding: 60px 10%; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
         }
 
         .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(148, 0, 211, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .chart-container {
-            position: relative;
-            height: 400px;
-            width: 100%;
-        }
+        h2 { font-size: 1.8rem; margin-bottom: 30px; color: var(--neon-cyan); }
 
-        .skill-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .bar-container { width: 100%; }
-        .bar-label { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--lavender); }
-        .bar-bg { background: rgba(255, 255, 255, 0.05); height: 10px; border-radius: 5px; overflow: hidden; }
-        .bar-fill { 
+        /* Skill Bars Styles */
+        .skill-item { margin-bottom: 25px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-gray); }
+        .progress-bar { height: 8px; background: #1a1a1a; border-radius: 4px; overflow: hidden; }
+        .progress-fill { 
             height: 100%; 
-            background: linear-gradient(90deg, var(--neon-violet), var(--neon-cyan));
-            box-shadow: 0 0 10px var(--neon-cyan);
-            border-radius: 5px;
+            background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan)); 
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
 
-        @media (max-width: 850px) {
-            .skills-layout { grid-template-columns: 1fr; }
+        /* Radar Chart Fix */
+        #radarChart { max-height: 400px; }
+
+        footer { text-align: center; padding: 50px; color: #444; }
+
+        @media (max-width: 600px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .skills-hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -104,80 +102,85 @@
     <nav>
         <a href="index.html" class="logo">TOBIAS</a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="skills.html" style="color: var(--neon-magenta);">Skills</a>
+            <a href="index.html">About</a>
+            <a href="skills.html">Skills</a>
             <a href="#">Projects</a>
+            <a href="#">Contact</a>
         </div>
     </nav>
 
-    <div class="container">
-        <h1>Tech Capabilities</h1>
-
-        <div class="skills-layout">
-            <div class="glass-card">
-                <h3>Expertise Overview</h3>
-                <div class="chart-container">
-                    <canvas id="radarChart"></canvas>
-                </div>
-            </div>
-
-            <div class="glass-card">
-                <h3>Detailed Proficiency</h3>
-                <div class="skill-bars">
-                    <div class="bar-container">
-                        <div class="bar-label"><span>Java (Minecraft/Backend)</span><span>95%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-                    </div>
-                    <div class="bar-container">
-                        <div class="bar-label"><span>JavaScript (React/Vue)</span><span>85%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
-                    </div>
-                    <div class="bar-container">
-                        <div class="bar-label"><span>Python & Lua</span><span>80%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
-                    </div>
-                    <div class="bar-container">
-                        <div class="bar-label"><span>MySQL & Databases</span><span>90%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="bar-container">
-                        <div class="bar-label"><span>UI/UX Design</span><span>88%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 88%;"></div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="skills-hero">
+        <h1>Tech Stack</h1>
+        <p>Expertise & Tools</p>
     </div>
 
+    <section>
+        <div class="skills-grid">
+            <div class="glass-card">
+                <h2>Core Proficiencies</h2>
+                
+                <div class="skill-item">
+                    <div class="skill-info"><span>Java (Minecraft & Enterprise)</span><span>92%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info"><span>JavaScript (React / Vue)</span><span>85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python (Automation & Data)</span><span>78%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 78%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info"><span>MySQL (Architecture)</span><span>88%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info"><span>Lua (Scripting)</span><span>70%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h2>Skill Balance</h2>
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Tobias. Powered by Innovation.
+    </footer>
+
     <script>
-        // Radar Chart Konfiguration
         const ctx = document.getElementById('radarChart').getContext('2d');
         new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['Logic', 'Design', 'Frontend', 'Backend', 'Database', 'Minecraft-Dev'],
+                labels: ['Logic', 'UI/UX', 'Database', 'Architecture', 'GameDev', 'API'],
                 datasets: [{
-                    label: 'Skill Level',
-                    data: [95, 88, 85, 92, 90, 98],
-                    backgroundColor: 'rgba(0, 255, 255, 0.2)',
-                    borderColor: '#00FFFF',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#FF00FF',
-                    pointBorderColor: '#fff',
+                    label: 'Capability',
+                    data: [95, 85, 90, 80, 92, 85],
+                    backgroundColor: 'rgba(255, 0, 255, 0.2)',
+                    borderColor: '#FF00FF',
+                    pointBackgroundColor: '#00FFFF',
+                    borderWidth: 2
                 }]
             },
             options: {
                 scales: {
                     r: {
-                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                        pointLabels: { color: '#E0B0FF', font: { size: 14 } },
-                        ticks: { display: false }
+                        grid: { color: '#333' },
+                        angleLines: { color: '#333' },
+                        pointLabels: { color: '#b0b0b0', font: { size: 12 } },
+                        ticks: { display: false, max: 100 }
                     }
                 },
-                plugins: {
-                    legend: { display: false }
-                }
+                plugins: { legend: { display: false } }
             }
         });
     </script>
