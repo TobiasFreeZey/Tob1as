@@ -3,128 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tob1as | Neon Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <title>Tob1as | Developer Profile</title>
     <style>
         :root {
-            --bg-color: #0F0A1A; /* Deep Midnight Purple */
-            --neon-violet: #9400D3;
-            --electric-magenta: #FF00FF;
-            --neon-cyan: #00FFFF;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --lavender: #E0B0FF;
+            --bg: #0F0A1A;
+            --accent-violet: #9400D3;
+            --accent-magenta: #FF00FF;
+            --accent-cyan: #00FFFF;
+            --text-lavender: #E0B0FF;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg);
             color: white;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 0, 211, 0.3); /* Neon Violet Border */
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(148, 0, 211, 0.4);
             border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 
-                        0 0 15px rgba(148, 0, 211, 0.2);
-            width: 90%;
-            max-width: 800px;
+            padding: 3rem;
+            max-width: 600px;
             text-align: center;
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 30px rgba(148, 0, 211, 0.2);
         }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon-cyan);
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-cyan);
+            box-shadow: 0 0 15px var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            object-fit: cover;
         }
 
         h1 {
-            color: var(--electric-magenta);
-            text-shadow: 0 0 15px var(--electric-magenta);
-            font-weight: 500;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
 
-        p {
-            color: var(--lavender);
-            font-weight: 300;
+        .role {
+            color: var(--accent-violet);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .bio {
+            color: var(--text-lavender);
+            line-height: 1.6;
             margin-bottom: 2rem;
         }
 
-        .chart-container {
-            position: relative;
-            height: 300px;
-            width: 100%;
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 5px 15px;
+            border-radius: 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 12px 30px;
+            border: 1px solid var(--accent-magenta);
+            color: var(--accent-magenta);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-magenta);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-magenta);
         }
     </style>
 </head>
 <body>
 
-    <div class="glass-card">
-        <h1>TOB1AS SYSTEM DATA</h1>
-        <p>Live-Visualisierung auf GitHub Pages</p>
+    <div class="welcome-card">
+        <div style="font-size: 50px; margin-bottom: 10px;">🚀</div> 
+        <h1>Hi, I'm Tobias</h1>
+        <span class="role">Fullstack Developer & UI Designer</span>
         
-        <div class="chart-container">
-            <canvas id="neonChart"></canvas>
+        <p class="bio">
+            Willkommen in meinem digitalen Headquarter. Ich liebe es, moderne Web-Erlebnisse mit 
+            fokus auf Performance und "Glow"-Design zu erschaffen.
+        </p>
+
+        <div class="tech-stack">
+            <span class="badge">VS Code</span>
+            <span class="badge">GitHub</span>
+            <span class="badge">HTML/CSS</span>
+            <span class="badge">JavaScript</span>
         </div>
+
+        <a href="https://github.com/TobiasFreeZey" class="btn">View My Work</a>
     </div>
 
-    <script>
-        const ctx = document.getElementById('neonChart').getContext('2d');
-        
-        // Gradient für die Liniengrafik (Cyan zu Purple)
-        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, 'rgba(0, 255, 255, 0.4)');
-        gradient.addColorStop(1, 'rgba(148, 0, 211, 0)');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00'],
-                datasets: [{
-                    label: 'System Performance',
-                    data: [65, 78, 72, 95, 85, 110, 105],
-                    borderColor: '#00FFFF', // Neon Cyan Linie
-                    borderWidth: 3,
-                    pointBackgroundColor: '#FF00FF', // Magenta Punkte
-                    pointBorderColor: '#fff',
-                    pointHoverRadius: 8,
-                    tension: 0.4, // Sleek Curves
-                    fill: true,
-                    backgroundColor: gradient
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: '#E0B0FF' }
-                    },
-                    y: {
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        ticks: { color: '#E0B0FF' }
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>
