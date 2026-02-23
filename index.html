@@ -3,127 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tob1as | Developer Profile</title>
+    <title>Tobias | Fullstack Developer & Designer</title>
     <style>
         :root {
             --bg: #0F0A1A;
-            --accent-violet: #9400D3;
-            --accent-magenta: #FF00FF;
-            --accent-cyan: #00FFFF;
-            --text-lavender: #E0B0FF;
+            --violet: #9400D3;
+            --magenta: #FF00FF;
+            --cyan: #00FFFF;
+            --lavender: #E0B0FF;
+            --glass: rgba(255, 255, 255, 0.03);
         }
+
+        * { box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
             color: white;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(148, 0, 211, 0.4);
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(148, 0, 211, 0.2);
+        .glow-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(148, 0, 211, 0.15), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.1), transparent 40%);
+            z-index: -1;
         }
 
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-cyan);
-            box-shadow: 0 0 15px var(--accent-cyan);
-            margin-bottom: 1.5rem;
-            object-fit: cover;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
         }
+
+        header { margin-bottom: 4rem; }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             margin: 0;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            font-weight: 800;
         }
 
-        .role {
-            color: var(--accent-violet);
-            letter-spacing: 3px;
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--lavender);
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            display: block;
+            margin-top: 10px;
         }
 
-        .bio {
-            color: var(--text-lavender);
-            line-height: 1.6;
-            margin-bottom: 2rem;
+        .about-section {
+            font-size: 1.15rem;
+            color: #ccc;
+            max-width: 800px;
+            margin-bottom: 4rem;
         }
 
-        .tech-stack {
+        .highlight { color: var(--cyan); font-weight: 600; }
+
+        /* Skill Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(148, 0, 211, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+        }
+
+        h3 { color: var(--magenta); margin-top: 0; font-size: 1.4rem; }
+
+        .tech-list {
             display: flex;
-            gap: 10px;
-            justify-content: center;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1rem;
         }
 
         .badge {
-            padding: 5px 15px;
-            border-radius: 15px;
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid var(--accent-cyan);
-            color: var(--accent-cyan);
-            font-size: 0.8rem;
+            background: rgba(148, 0, 211, 0.1);
+            border: 1px solid var(--violet);
+            color: var(--lavender);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
         }
 
-        .btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 12px 30px;
-            border: 1px solid var(--accent-magenta);
-            color: var(--accent-magenta);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s;
+        /* Project Section */
+        .section-title {
+            font-size: 2rem;
+            margin: 4rem 0 2rem;
+            border-left: 4px solid var(--cyan);
+            padding-left: 1rem;
         }
 
-        .btn:hover {
-            background: var(--accent-magenta);
-            color: white;
-            box-shadow: 0 0 20px var(--accent-magenta);
+        .project-item {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .minecraft-accent { border-left: 4px solid #55FF55; } /* Minecraft Green */
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            color: #555;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
+    <div class="glow-bg"></div>
 
-    <div class="welcome-card">
-        <div style="font-size: 50px; margin-bottom: 10px;">🚀</div> 
-        <h1>Hi, I'm Tobias</h1>
-        <span class="role">Fullstack Developer & UI Designer</span>
-        
-        <p class="bio">
-            Willkommen in meinem digitalen Headquarter. Ich liebe es, moderne Web-Erlebnisse mit 
-            fokus auf Performance und "Glow"-Design zu erschaffen.
-        </p>
+    <main class="container">
+        <header>
+            <h1>Tobias</h1>
+            <div class="tagline">Fullstack Developer & UI/UX Specialist</div>
+        </header>
 
-        <div class="tech-stack">
-            <span class="badge">VS Code</span>
-            <span class="badge">GitHub</span>
-            <span class="badge">HTML/CSS</span>
-            <span class="badge">JavaScript</span>
+        <section class="about-section">
+            <p>
+                Ich verbinde technische Präzision mit modernem Design. Ob ich skalierbare Backends mit <span class="highlight">Java</span> entwickle, 
+                reaktive Frontends mit <span class="highlight">React & Vue</span> gestalte oder komplexe <span class="highlight">MySQL</span>-Datenbanken optimiere – 
+                mein Fokus liegt immer auf der Performance und dem Nutzererlebnis.
+            </p>
+            <p>
+                Besonders im <span class="highlight">Minecraft-Bereich</span> kombiniere ich meine Leidenschaft für Game-Development mit professionellem Scripting in Lua und Plugin-Entwicklung.
+            </p>
+        </section>
+
+        <div class="grid">
+            <div class="glass-card">
+                <h3>Backend & Data</h3>
+                <p>Robuste Logik und sichere Datenverwaltung.</p>
+                <div class="tech-list">
+                    <span class="badge">Java</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">Node.js</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3>Frontend & UI</h3>
+                <p>Interaktive Oberflächen mit System.</p>
+                <div class="tech-list">
+                    <span class="badge">React</span>
+                    <span class="badge">Vue.js</span>
+                    <span class="badge">Modern CSS</span>
+                    <span class="badge">UI/UX Design</span>
+                </div>
+            </div>
         </div>
 
-        <a href="https://github.com/TobiasFreeZey" class="btn">View My Work</a>
-    </div>
+        <h2 class="section-title">Projekte & Expertise</h2>
+        
+        <div class="project-item minecraft-accent">
+            <strong>Minecraft Development</strong>
+            <p>Entwicklung von Custom-Plugins und Scripts (Lua/Java). Fokus auf performante Datenbank-Anbindungen und einzigartige Spielmechaniken.</p>
+        </div>
 
+        <div class="project-item">
+            <strong>Fullstack Web Apps</strong>
+            <p>Konzeption und Umsetzung von Dashboards im Glassmorphism-Stil mit React-Frontend und MySQL-Backend.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 Tobias. <br>
+            Entwickelt mit Leidenschaft für Code und Ästhetik.
+        </footer>
+    </main>
 </body>
 </html>
