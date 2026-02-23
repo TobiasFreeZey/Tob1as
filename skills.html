@@ -46,14 +46,15 @@
             padding: 50px 20px;
         }
 
-        h1 {
-            text-align: center;
-            font-size: 3rem;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 50px;
-        }
+      h1 {
+    text-align: center;
+    font-size: 3rem;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+    -webkit-background-clip: text; /* Für Chrome/Safari */
+    background-clip: text;         /* Standard - Das hier behebt die Warnung! */
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+}
 
         .skills-layout {
             display: grid;
