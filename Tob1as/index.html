@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="glass-card" style="width: 600px; margin: 50px auto;">
+    <canvas id="myNeonChart"></canvas>
+</div>
+
+<script>
+    const ctx = document.getElementById('myNeonChart').getContext('2d');
+    
+    // Erstelle den Cyan-zu-Purple Gradienten
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(0, 255, 255, 0.5)'); // Neon Cyan
+    gradient.addColorStop(1, 'rgba(148, 0, 211, 0.1)'); // Purple Transparent
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun'],
+            datasets: [{
+                label: 'Performance',
+                data: [12, 19, 15, 25, 22, 30],
+                borderColor: '#00FFFF', // Cyan Linie
+                borderWidth: 3,
+                backgroundColor: gradient,
+                fill: true,
+                tension: 0.4, // Geschmeidige Kurve
+                pointBackgroundColor: '#FF00FF' // Magenta Punkte
+            }]
+        },
+        options: {
+            plugins: { legend: { labels: { color: '#FFFFFF' } } },
+            scales: {
+                y: { grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#E0B0FF' } },
+                x: { grid: { display: false }, ticks: { color: '#E0B0FF' } }
+            }
+        }
+    });
+</script>
