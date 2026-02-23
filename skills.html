@@ -3,121 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tobias | Tech Expertise</title>
+    <title>Tob1as | Fähigkeiten</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #07050a;
-            --card-bg: #0F0A1A;
-            --neon-magenta: #FF00FF;
-            --neon-cyan: #00FFFF;
-            --neon-purple: #9400D3;
-            --text-gray: #b0b0b0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg-dark);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-        }
-
-        /* Navigation (Gleich wie Index) */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: rgba(7, 5, 10, 0.95);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: 2px; color: var(--neon-cyan); text-decoration: none; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover { color: var(--neon-magenta); }
-
-        /* Hero Section für Skills */
-        .skills-hero {
-            height: 40vh;
-            background: linear-gradient(rgba(0,0,0,0.7), var(--bg-dark)), 
-                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .skills-hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; }
-        .skills-hero p { color: var(--neon-magenta); letter-spacing: 2px; }
-
-        /* Content Layout */
-        section { padding: 60px 10%; }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
-        }
-
-        .glass-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 0, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        h2 { font-size: 1.8rem; margin-bottom: 30px; color: var(--neon-cyan); }
-
-        /* Skill Bars Styles */
-        .skill-item { margin-bottom: 25px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-gray); }
-        .progress-bar { height: 8px; background: #1a1a1a; border-radius: 4px; overflow: hidden; }
-        .progress-fill { 
-            height: 100%; 
-            background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan)); 
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-
-        /* Radar Chart Fix */
-        #radarChart { max-height: 400px; }
-
-        footer { text-align: center; padding: 50px; color: #444; }
-
-        @media (max-width: 600px) {
-            .skills-grid { grid-template-columns: 1fr; }
-            .skills-hero h1 { font-size: 2rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">TOBIAS</a>
+        <a href="index.html" class="logo">Tob1as</a>
         <div class="nav-links">
             <a href="index.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
+            <a href="skills.html">Fähigkeiten</a>
+            <a href="projects.html">Projekte</a>
+            <a href="#">Kontakt</a>
         </div>
     </nav>
-
     <div class="skills-hero">
-        <h1>Tech Stack</h1>
-        <p>Expertise & Tools</p>
+        <h1>Fähigkeiten & Tools</h1>
+        <p>Expertise in Technologie und Automatisierung</p>
     </div>
 
     <section>
         <div class="skills-grid">
             <div class="glass-card">
-                <h2>Core Proficiencies</h2>
+                <h2>Kernkompetenzen</h2>
                 
                 <div class="skill-item">
                     <div class="skill-info"><span>Java (Minecraft & Enterprise)</span><span>92%</span></div>
@@ -135,7 +45,7 @@
                 </div>
 
                 <div class="skill-item">
-                    <div class="skill-info"><span>MySQL (Architecture)</span><span>88%</span></div>
+                    <div class="skill-info"><span>MySQL (Architektur)</span><span>88%</span></div>
                     <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
                 </div>
 
@@ -153,7 +63,7 @@
     </section>
 
     <footer>
-        &copy; 2026 Tobias. Powered by Innovation.
+        &copy; 2026 Tob1as. Powered by Innovation.
     </footer>
 
     <script>
@@ -161,25 +71,18 @@
         new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['Logic', 'UI/UX', 'Database', 'Architecture', 'GameDev', 'API'],
+                labels: ['Logik','UI/UX','Daten','Architektur','GameDev','API'],
                 datasets: [{
                     label: 'Capability',
-                    data: [95, 85, 90, 80, 92, 85],
-                    backgroundColor: 'rgba(255, 0, 255, 0.2)',
+                    data: [95,85,90,80,92,85],
+                    backgroundColor: 'rgba(255,0,255,0.15)',
                     borderColor: '#FF00FF',
                     pointBackgroundColor: '#00FFFF',
                     borderWidth: 2
                 }]
             },
             options: {
-                scales: {
-                    r: {
-                        grid: { color: '#333' },
-                        angleLines: { color: '#333' },
-                        pointLabels: { color: '#b0b0b0', font: { size: 12 } },
-                        ticks: { display: false, max: 100 }
-                    }
-                },
+                scales: { r: { grid: { color: '#333' }, angleLines: { color: '#333' }, pointLabels: { color: '#b0b0b0', font: { size: 12 } }, ticks: { display: false, max: 100 } } },
                 plugins: { legend: { display: false } }
             }
         });

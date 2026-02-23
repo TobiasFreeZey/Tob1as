@@ -3,94 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tobias | Projects</title>
+    <title>Tob1as | Projekte</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #07050a;
-            --card-bg: #0F0A1A;
-            --neon-magenta: #FF00FF;
-            --neon-cyan: #00FFFF;
-            --text-gray: #b0b0b0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-dark); color: white; font-family: 'Poppins', sans-serif; }
-
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: rgba(7, 5, 10, 0.95); position: sticky; top: 0; z-index: 1000;
-        }
-
-        .logo { font-weight: 700; font-size: 1.5rem; color: var(--neon-cyan); text-decoration: none; }
-        .nav-links a { color: white; text-decoration: none; margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; }
-
-        .projects-hero {
-            height: 40vh;
-            background: linear-gradient(rgba(7, 5, 10, 0.8), var(--bg-dark)), 
-                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1600') center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-
-        section { padding: 60px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
-        }
-
-        .project-img {
-            height: 200px; width: 100%; background: #1a1a1a;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 3rem;
-        }
-
-        .project-info { padding: 25px; }
-        .project-info h3 { color: var(--neon-magenta); margin-bottom: 10px; }
-        .project-info p { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 15px; }
-        
-        .tag {
-            display: inline-block; padding: 3px 10px; border-radius: 5px;
-            font-size: 0.7rem; background: rgba(0, 255, 255, 0.1); color: var(--neon-cyan); margin-right: 5px;
-        }
-
-        footer { text-align: center; padding: 50px; color: #444; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">TOBIAS</a>
+        <a href="index.html" class="logo">Tob1as</a>
         <div class="nav-links">
             <a href="index.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="#">Contact</a>
+            <a href="skills.html">Fähigkeiten</a>
+            <a href="projects.html">Projekte</a>
+            <a href="#">Kontakt</a>
         </div>
     </nav>
 
-    <div class="projects-hero">
-        <h1>Selected Works</h1>
-    </div>
+    <header class="projects-hero">
+        <h1>Ausgewählte Projekte</h1>
+    </header>
 
     <section>
-        <div class="grid">
+        <div class="project-grid">
             <div class="project-card">
                 <div class="project-img">🧱</div>
                 <div class="project-info">
                     <span class="tag">Java</span> <span class="tag">MySQL</span>
                     <h3>Advanced System Plugin</h3>
-                    <p>Ein Hochleistungs-Spigot Plugin mit Echtzeit-Datenbankanbindung für Minecraft Server-Netzwerke.</p>
+                    <p>Ein Hochleistungs‑Spigot Plugin mit Echtzeit‑Datenbankanbindung für Server‑Netzwerke.</p>
                 </div>
             </div>
 
@@ -99,7 +39,7 @@
                 <div class="project-info">
                     <span class="tag">React</span> <span class="tag">UI/UX</span>
                     <h3>Neon Dashboard</h3>
-                    <p>Interaktive Weboberfläche zur Analyse von Serverstatistiken mit Fokus auf Glassmorphism.</p>
+                    <p>Interaktive Dashboards zur Analyse von Serverdaten mit klarem UX‑Fokus.</p>
                 </div>
             </div>
 
@@ -108,13 +48,13 @@
                 <div class="project-info">
                     <span class="tag">Python</span> <span class="tag">Automation</span>
                     <h3>Scripting Suite</h3>
-                    <p>Automatisierungstools zur Verwaltung von Cloud-Infrastrukturen und Datenverarbeitung.</p>
+                    <p>Automatisierungs‑Tools für Cloud‑Tasks und Datenpipelines.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>&copy; 2026 Tobias.</footer>
+    <footer>&copy; 2026 Tob1as.</footer>
 
 </body>
 </html>

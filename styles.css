@@ -1,0 +1,49 @@
+:root{
+  --bg-dark:#07050a;
+  --card-bg:#0f0a1a;
+  --AccentMagenta:#ff00ff;
+  --AccentCyan:#00ffff;
+  --AccentPurple:#9400d3;
+  --muted:#b0b0b0;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg-dark);color:#fff;font-family:'Poppins',sans-serif;line-height:1.5}
+
+/* Layout */
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 5%;background:rgba(7,5,10,0.95);position:sticky;top:0;z-index:50}
+.logo{font-weight:700;font-size:1.35rem;color:var(--AccentCyan)}
+.nav-links a{color:#fff;text-decoration:none;margin-left:24px;font-size:0.9rem;text-transform:uppercase;opacity:0.95}
+.nav-links a:hover{color:var(--AccentMagenta)}
+
+/* Hero */
+.hero{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:40px 5%;background:linear-gradient(rgba(0,0,0,0.45),var(--bg-dark))}
+.hero-inner{max-width:980px;text-align:center}
+.avatar{width:140px;height:140px;border-radius:999px;border:4px solid rgba(0,255,255,0.12);object-fit:cover;margin:0 auto 18px}
+.hero h1{font-size:2.4rem;margin-bottom:8px}
+.lead{color:var(--muted);margin-bottom:18px}
+.hero-ctas .btn{display:inline-block;margin:0 8px;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+.btn{background:var(--AccentMagenta);color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+/* Sections */
+section{padding:64px 10%}
+h2{font-size:1.6rem;margin-bottom:20px;color:#fff}
+.muted{background:#090610}
+
+/* Grid & cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:var(--card-bg);padding:24px;border-radius:12px;border:1px solid rgba(255,0,255,0.06);transition:transform .24s,box-shadow .24s}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(0,0,0,0.6)}
+.icon{font-size:2rem;margin-bottom:12px;display:block}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.project-card{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:28px;border-radius:10px;border-bottom:4px solid var(--AccentPurple)}
+
+/* Text */
+p{color:var(--muted)}
+
+footer{text-align:center;padding:40px;color:#777;border-top:1px solid #0b0b0b;margin-top:30px}
+
+/* Utilities */
+@media (max-width:720px){.hero h1{font-size:1.6rem}.nav-links{display:none}.grid{grid-template-columns:1fr}.project-grid{grid-template-columns:1fr}}
