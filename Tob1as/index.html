@@ -1,38 +1,130 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<div class="glass-card" style="width: 600px; margin: 50px auto;">
-    <canvas id="myNeonChart"></canvas>
-</div>
-
-<script>
-    const ctx = document.getElementById('myNeonChart').getContext('2d');
-    
-    // Erstelle den Cyan-zu-Purple Gradienten
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(0, 255, 255, 0.5)'); // Neon Cyan
-    gradient.addColorStop(1, 'rgba(148, 0, 211, 0.1)'); // Purple Transparent
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun'],
-            datasets: [{
-                label: 'Performance',
-                data: [12, 19, 15, 25, 22, 30],
-                borderColor: '#00FFFF', // Cyan Linie
-                borderWidth: 3,
-                backgroundColor: gradient,
-                fill: true,
-                tension: 0.4, // Geschmeidige Kurve
-                pointBackgroundColor: '#FF00FF' // Magenta Punkte
-            }]
-        },
-        options: {
-            plugins: { legend: { labels: { color: '#FFFFFF' } } },
-            scales: {
-                y: { grid: { color: 'rgba(255, 255, 255, 0.1)' }, ticks: { color: '#E0B0FF' } },
-                x: { grid: { display: false }, ticks: { color: '#E0B0FF' } }
-            }
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tob1as | Neon Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0F0A1A; /* Deep Midnight Purple */
+            --neon-violet: #9400D3;
+            --electric-magenta: #FF00FF;
+            --neon-cyan: #00FFFF;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --lavender: #E0B0FF;
         }
-    });
-</script>
+
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 0, 211, 0.3); /* Neon Violet Border */
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), 
+                        0 0 15px rgba(148, 0, 211, 0.2);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+        }
+
+        h1 {
+            color: var(--electric-magenta);
+            text-shadow: 0 0 15px var(--electric-magenta);
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--lavender);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <h1>TOB1AS SYSTEM DATA</h1>
+        <p>Live-Visualisierung auf GitHub Pages</p>
+        
+        <div class="chart-container">
+            <canvas id="neonChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('neonChart').getContext('2d');
+        
+        // Gradient für die Liniengrafik (Cyan zu Purple)
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(0, 255, 255, 0.4)');
+        gradient.addColorStop(1, 'rgba(148, 0, 211, 0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00'],
+                datasets: [{
+                    label: 'System Performance',
+                    data: [65, 78, 72, 95, 85, 110, 105],
+                    borderColor: '#00FFFF', // Neon Cyan Linie
+                    borderWidth: 3,
+                    pointBackgroundColor: '#FF00FF', // Magenta Punkte
+                    pointBorderColor: '#fff',
+                    pointHoverRadius: 8,
+                    tension: 0.4, // Sleek Curves
+                    fill: true,
+                    backgroundColor: gradient
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#E0B0FF' }
+                    },
+                    y: {
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#E0B0FF' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
